@@ -63,4 +63,12 @@ describe("Swag Labs Login", () => {
     cy.get(locators.errorMessageLocator).should("have.text", testData.errorMessages.emptyUsernameAndPasswordMessage);
 
   })
+
+  it("Login with invalid credentials", () => {
+    cy.visit("https://www.saucedemo.com/");
+    cy.get(locators.usernameField).type(testData.invalid.username);
+    cy.get(locators.passwordField).type(testData.invalid.password);
+    cy.get(locators.loginButton).click();
+    cy.get(locators.errorMessageLocator).should("have.text", testData.errorMessages.invalidCredentials);    
+  })
 });
