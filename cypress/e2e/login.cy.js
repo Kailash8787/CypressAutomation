@@ -35,7 +35,7 @@ const testData={
 
 describe("Swag Labs Login", () => {
   it("Login with valid credentials", () => {
-    cy.visit("https://www.saucedemo.com/");
+    cy.visit("/");
 
     cy.get(locators.usernameField).type(testData.valid.username);
 
@@ -55,7 +55,7 @@ describe("Swag Labs Login", () => {
   });
 
   it.only("Login with empty credentials", () => {
-    cy.visit("https://www.saucedemo.com/");
+    cy.visit("/");
     cy.get(locators.loginButton).click();
     cy.get(locators.crossMarkButton).eq(0).should("be.visible");
     cy.get(locators.crossMarkButton).eq(1).should("be.visible");
@@ -65,7 +65,7 @@ describe("Swag Labs Login", () => {
   })
 
   it("Login with invalid credentials", () => {
-    cy.visit("https://www.saucedemo.com/");
+    cy.visit("/");
     cy.get(locators.usernameField).type(testData.invalid.username);
     cy.get(locators.passwordField).type(testData.invalid.password);
     cy.get(locators.loginButton).click();
